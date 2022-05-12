@@ -7,6 +7,12 @@ Single digit numbers are added together individually(29:: 2+9=11)
 There are three double digit numbers that do not get added(11,22,33)
 These are called "Master numbers"
 
+This takes the entire string and strips spaces and computes as one.
+#! Will be interesting to have capability to compute multiple names
+    and return list of integers from all names
+
+#! TODO compute birthdates(include number computations)
+
 will need to verify each letter is alpha
 
 Parameters:
@@ -26,12 +32,30 @@ def main() -> None:
     """
     Run me baby
     """
-    pass
+    usr_in = input("Enter the word(s) to convert: ")
+    if cleanString(usr_in).isalpha(): # remove whitespace from string verify alpha
+        converted_string = convertString(usr_in)
+        converted_sum = sum(converted_string)
+        print(pyMethod(converted_sum))
+        return pyMethod(converted_sum)
+    else:
+        return "Invalid input."
 
 
-def convertString(word: str) -> str:
+def cleanString(string:str) -> str:
     """
-    
+    clean whitespace out of the string.
+    """
+    return string.replace(" ", "")
+
+
+def convertString(word: str) -> list:
+    """
+    Take a string and convert each letter in string to integer
+    and return list of integer values.
+
+    Parameter word:
+    Preconditions:
     """
     converted_letters = []
     for letter in word:
@@ -43,6 +67,8 @@ def convertString(word: str) -> str:
 def convertToLower(letter: str) -> str:
     """
     converts the string to lower case and nothing more.
+    
+    This is used in the convertString() func
     """
     return letter.lower()
 
@@ -51,6 +77,8 @@ def convertToInt(letter: str) -> int:
     """
     Convert a single letter into an integer
     This must NOT manipulate the string value in any way
+
+    This is used in convertString() func
 
     Parameter letter: must be a single letter(a to z) in string format
     Preconditions: must be string value
@@ -84,3 +112,22 @@ def convertToInt(letter: str) -> int:
         return 9
     else:
         return 0
+
+
+def pyMethod(number: int) -> int:
+    """
+    Add together until get to single digit or(11,22,33)
+    """
+    while number > 9:
+        if number == 33:
+            return 33
+        elif number == 22:
+            return 22
+        elif number == 11:
+            return 11
+        number = sum(int(i) for i in str(number))
+    return number
+        
+
+if __name__ == "__main__":
+    main()
