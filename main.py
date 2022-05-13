@@ -114,6 +114,29 @@ def convertToInt(letter: str) -> int:
         return 0
 
 
+# something different?
+def newConvertToInt(this_letter: str) -> int:
+    """
+    Convert a single letter into an integer
+    This must NOT manipulate the string value in any way
+
+    This is used in convertString() func
+
+    Parameter letter: must be a single letter(a to z) in string format
+    Preconditions: must be string value
+    """
+    letters = "abcdefghijklmnopqrstuvwxyz"
+    count = 1
+    for letter in letters:
+        if count > 9:
+            count = 1
+        if letter == this_letter:
+            return count
+        count += 1
+
+
+
+
 def pyMethod(number: int) -> int:
     """
     Add together until get to single digit or(11,22,33)
