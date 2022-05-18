@@ -135,8 +135,6 @@ def newConvertToInt(this_letter: str) -> int:
         count += 1
 
 
-
-
 def pyMethod(number: int) -> int:
     """
     Add together until get to single digit or(11,22,33)
